@@ -1,0 +1,205 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/dandean/guid"
+
+    >guid (v0.0.12)</a>
+</h1>
+<h4>A Guid generator and validator.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.guid">module guid</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.guid.create">
+            function <span class="apidocSignatureSpan">guid.</span>create
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.guid.isGuid">
+            function <span class="apidocSignatureSpan">guid.</span>isGuid
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.guid.raw">
+            function <span class="apidocSignatureSpan">guid.</span>raw
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">guid.</span>EMPTY</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.guid" id="apidoc.module.guid">module guid</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.guid.create" id="apidoc.element.guid.create">
+        function <span class="apidocSignatureSpan">guid.</span>create
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">create = function () {
+  return new Guid([gen(2), gen(1), gen(1), gen(1), gen(3)].join(&#x22;-&#x22;));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+In its simplest form, Guid lets you generate raw GUID formatted strings:
+
+Guid.raw();
+// -&#x3e; &#x27;6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d&#x27;
+
+Let&#x27;s generate a new Guid instance.
+
+var guid = Guid.<span class="apidocCodeKeywordSpan">create</span>();
+
+We&#x27;ve now got an object which we can work with programmatically. Lets check the
+validity of our Guid using the built-in validator:
+
+Guid.isGuid(guid);
+// -&#x3e; true
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.guid.isGuid" id="apidoc.element.guid.isGuid">
+        function <span class="apidocSignatureSpan">guid.</span>isGuid
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isGuid = function (value) {
+  return value &#x26;&#x26; (value instanceof Guid || validator.test(value.toString()));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Let&#x27;s generate a new Guid instance.
+
+    var guid = Guid.create();
+
+We&#x27;ve now got an object which we can work with programmatically. Lets check the
+validity of our Guid using the built-in validator:
+
+    Guid.<span class="apidocCodeKeywordSpan">isGuid</span>(guid);
+    // -&#x3e; true
+
+    Guid.value;
+    // -&#x3e; &#x27;6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d&#x27;
+
+A handy bit of functionality is that its `toString` method returns the string
+value, so you can do handy things like this:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.guid.raw" id="apidoc.element.guid.raw">
+        function <span class="apidocSignatureSpan">guid.</span>raw
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">raw = function () {
+  return [gen(2), gen(1), gen(1), gen(1), gen(3)].join(&#x22;-&#x22;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+# Guid lets you generate and validate unique identifiers.
+
+[![browser support](https://ci.testling.com/tommydudebreaux/guid.png)](https://ci.testling.com/tommydudebreaux/guid)
+
+In its simplest form, Guid lets you generate raw GUID formatted strings:
+
+    Guid.<span class="apidocCodeKeywordSpan">raw</span>();
+    // -&#x3e; &#x27;6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d&#x27;
+
+Let&#x27;s generate a new Guid instance.
+
+    var guid = Guid.create();
+
+We&#x27;ve now got an object which we can work with programmatically. Lets check the
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
