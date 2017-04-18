@@ -1,9 +1,14 @@
-# api documentation for  [guid (v0.0.12)](https://github.com/dandean/guid)  [![npm package](https://img.shields.io/npm/v/npmdoc-guid.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-guid) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-guid.svg)](https://travis-ci.org/npmdoc/node-npmdoc-guid)
+# npmdoc-guid
+
+#### api documentation for  [guid (v0.0.12)](https://github.com/dandean/guid)  [![npm package](https://img.shields.io/npm/v/npmdoc-guid.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-guid) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-guid.svg)](https://travis-ci.org/npmdoc/node-npmdoc-guid)
+
 #### A Guid generator and validator.
 
-[![NPM](https://nodei.co/npm/guid.png?downloads=true)](https://www.npmjs.com/package/guid)
+[![NPM](https://nodei.co/npm/guid.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/guid)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-guid/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-guid_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-guid/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-guid/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-guid/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-guid/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-guid/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-guid/build/screenCapture.npmPackageListing.svg)
 
@@ -18,7 +23,6 @@
 {
     "author": {
         "name": "Dan Dean",
-        "email": "@dandean",
         "url": "http://dandean.com"
     },
     "bugs": {
@@ -51,13 +55,11 @@
     "main": "./guid",
     "maintainers": [
         {
-            "name": "dandean",
-            "email": "me@dandean.com"
+            "name": "dandean"
         }
     ],
     "name": "guid",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git://github.com/dandean/guid.git"
@@ -109,103 +111,6 @@
     },
     "version": "0.0.12"
 }
-```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module guid](#apidoc.module.guid)
-1.  [function <span class="apidocSignatureSpan">guid.</span>create ()](#apidoc.element.guid.create)
-1.  [function <span class="apidocSignatureSpan">guid.</span>isGuid (value)](#apidoc.element.guid.isGuid)
-1.  [function <span class="apidocSignatureSpan">guid.</span>raw ()](#apidoc.element.guid.raw)
-1.  string <span class="apidocSignatureSpan">guid.</span>EMPTY
-
-
-
-# <a name="apidoc.module.guid"></a>[module guid](#apidoc.module.guid)
-
-#### <a name="apidoc.element.guid.create"></a>[function <span class="apidocSignatureSpan">guid.</span>create ()](#apidoc.element.guid.create)
-- description and source-code
-```javascript
-create = function () {
-  return new Guid([gen(2), gen(1), gen(1), gen(1), gen(3)].join("-"));
-}
-```
-- example usage
-```shell
-...
-In its simplest form, Guid lets you generate raw GUID formatted strings:
-
-Guid.raw();
-// -> '6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d'
-
-Let's generate a new Guid instance.
-
-var guid = Guid.create();
-
-We've now got an object which we can work with programmatically. Lets check the
-validity of our Guid using the built-in validator:
-
-Guid.isGuid(guid);
-// -> true
-...
-```
-
-#### <a name="apidoc.element.guid.isGuid"></a>[function <span class="apidocSignatureSpan">guid.</span>isGuid (value)](#apidoc.element.guid.isGuid)
-- description and source-code
-```javascript
-isGuid = function (value) {
-  return value && (value instanceof Guid || validator.test(value.toString()));
-}
-```
-- example usage
-```shell
-...
-Let's generate a new Guid instance.
-
-    var guid = Guid.create();
-
-We've now got an object which we can work with programmatically. Lets check the
-validity of our Guid using the built-in validator:
-
-    Guid.isGuid(guid);
-    // -> true
-
-    Guid.value;
-    // -> '6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d'
-
-A handy bit of functionality is that its 'toString' method returns the string
-value, so you can do handy things like this:
-...
-```
-
-#### <a name="apidoc.element.guid.raw"></a>[function <span class="apidocSignatureSpan">guid.</span>raw ()](#apidoc.element.guid.raw)
-- description and source-code
-```javascript
-raw = function () {
-  return [gen(2), gen(1), gen(1), gen(1), gen(3)].join("-");
-}
-```
-- example usage
-```shell
-...
-
-# Guid lets you generate and validate unique identifiers.
-
-[![browser support](https://ci.testling.com/tommydudebreaux/guid.png)](https://ci.testling.com/tommydudebreaux/guid)
-
-In its simplest form, Guid lets you generate raw GUID formatted strings:
-
-    Guid.raw();
-    // -> '6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d'
-
-Let's generate a new Guid instance.
-
-    var guid = Guid.create();
-
-We've now got an object which we can work with programmatically. Lets check the
-...
 ```
 
 
