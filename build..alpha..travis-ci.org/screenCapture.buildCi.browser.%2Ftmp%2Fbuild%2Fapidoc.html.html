@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/dandean/guid"
-
-    >guid (v0.0.12)</a>
+    <a href="https://github.com/dandean/guid">guid (v0.0.12)</a>
 </h1>
 <h4>A Guid generator and validator.</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.guid">module guid</a><ol>
 
@@ -165,21 +158,21 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function Guid(guid) {
-  if (!guid) throw new TypeError(&#x22;Invalid argument; `value` has no value.&#x22;);
+  if (!guid) throw new TypeError("Invalid argument; `value` has no value.");
 
   this.value = Guid.EMPTY;
 
-  if (guid &#x26;&#x26; guid instanceof Guid) {
+  if (guid &amp;&amp; guid instanceof Guid) {
     this.value = guid.toString();
 
-  } else if (guid &#x26;&#x26; Object.prototype.toString.call(guid) === &#x22;[object String]&#x22; &#x26;&#x26; Guid.isGuid(guid)) {
+  } else if (guid &amp;&amp; Object.prototype.toString.call(guid) === "[object String]" &amp;&amp; Guid.isGuid(guid)) {
     this.value = guid;
   }
 
   this.equals = function(other) {
     // Comparing string `value` against provided `guid` will auto-call
     // toString on `guid` for comparison
-    return Guid.isGuid(other) &#x26;&#x26; this.value == other;
+    return Guid.isGuid(other) &amp;&amp; this.value == other;
   };
 
   this.isEmpty = function() {
@@ -207,23 +200,23 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">create = function () {
-  return new Guid([gen(2), gen(1), gen(1), gen(1), gen(3)].join(&#x22;-&#x22;));
+  return new Guid([gen(2), gen(1), gen(1), gen(1), gen(3)].join("-"));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 In its simplest form, Guid lets you generate raw GUID formatted strings:
 
 Guid.raw();
-// -&#x3e; &#x27;6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d&#x27;
+// -&gt; '6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d'
 
-Let&#x27;s generate a new Guid instance.
+Let's generate a new Guid instance.
 
 var guid = Guid.<span class="apidocCodeKeywordSpan">create</span>();
 
-We&#x27;ve now got an object which we can work with programmatically. Lets check the
+We've now got an object which we can work with programmatically. Lets check the
 validity of our Guid using the built-in validator:
 
 Guid.isGuid(guid);
-// -&#x3e; true
+// -&gt; true
 ...</pre></li>
     </ul>
 
@@ -237,21 +230,21 @@ Guid.isGuid(guid);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isGuid = function (value) {
-  return value &#x26;&#x26; (value instanceof Guid || validator.test(value.toString()));
+  return value &amp;&amp; (value instanceof Guid || validator.test(value.toString()));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-Let&#x27;s generate a new Guid instance.
+Let's generate a new Guid instance.
 
     var guid = Guid.create();
 
-We&#x27;ve now got an object which we can work with programmatically. Lets check the
+We've now got an object which we can work with programmatically. Lets check the
 validity of our Guid using the built-in validator:
 
     Guid.<span class="apidocCodeKeywordSpan">isGuid</span>(guid);
-    // -&#x3e; true
+    // -&gt; true
 
     Guid.value;
-    // -&#x3e; &#x27;6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d&#x27;
+    // -&gt; '6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d'
 
 A handy bit of functionality is that its `toString` method returns the string
 value, so you can do handy things like this:
@@ -268,7 +261,7 @@ value, so you can do handy things like this:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">raw = function () {
-  return [gen(2), gen(1), gen(1), gen(1), gen(3)].join(&#x22;-&#x22;);
+  return [gen(2), gen(1), gen(1), gen(1), gen(3)].join("-");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
@@ -279,13 +272,13 @@ value, so you can do handy things like this:
 In its simplest form, Guid lets you generate raw GUID formatted strings:
 
     Guid.<span class="apidocCodeKeywordSpan">raw</span>();
-    // -&#x3e; &#x27;6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d&#x27;
+    // -&gt; '6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d'
 
-Let&#x27;s generate a new Guid instance.
+Let's generate a new Guid instance.
 
     var guid = Guid.create();
 
-We&#x27;ve now got an object which we can work with programmatically. Lets check the
+We've now got an object which we can work with programmatically. Lets check the
 ...</pre></li>
     </ul>
 
@@ -306,21 +299,21 @@ We&#x27;ve now got an object which we can work with programmatically. Lets check
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function Guid(guid) {
-  if (!guid) throw new TypeError(&#x22;Invalid argument; `value` has no value.&#x22;);
+  if (!guid) throw new TypeError("Invalid argument; `value` has no value.");
 
   this.value = Guid.EMPTY;
 
-  if (guid &#x26;&#x26; guid instanceof Guid) {
+  if (guid &amp;&amp; guid instanceof Guid) {
     this.value = guid.toString();
 
-  } else if (guid &#x26;&#x26; Object.prototype.toString.call(guid) === &#x22;[object String]&#x22; &#x26;&#x26; Guid.isGuid(guid)) {
+  } else if (guid &amp;&amp; Object.prototype.toString.call(guid) === "[object String]" &amp;&amp; Guid.isGuid(guid)) {
     this.value = guid;
   }
 
   this.equals = function(other) {
     // Comparing string `value` against provided `guid` will auto-call
     // toString on `guid` for comparison
-    return Guid.isGuid(other) &#x26;&#x26; this.value == other;
+    return Guid.isGuid(other) &amp;&amp; this.value == other;
   };
 
   this.isEmpty = function() {
@@ -348,23 +341,23 @@ We&#x27;ve now got an object which we can work with programmatically. Lets check
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">create = function () {
-  return new Guid([gen(2), gen(1), gen(1), gen(1), gen(3)].join(&#x22;-&#x22;));
+  return new Guid([gen(2), gen(1), gen(1), gen(1), gen(3)].join("-"));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 In its simplest form, Guid lets you generate raw GUID formatted strings:
 
 Guid.raw();
-// -&#x3e; &#x27;6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d&#x27;
+// -&gt; '6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d'
 
-Let&#x27;s generate a new Guid instance.
+Let's generate a new Guid instance.
 
 var guid = Guid.<span class="apidocCodeKeywordSpan">create</span>();
 
-We&#x27;ve now got an object which we can work with programmatically. Lets check the
+We've now got an object which we can work with programmatically. Lets check the
 validity of our Guid using the built-in validator:
 
 Guid.isGuid(guid);
-// -&#x3e; true
+// -&gt; true
 ...</pre></li>
     </ul>
 
@@ -378,21 +371,21 @@ Guid.isGuid(guid);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isGuid = function (value) {
-  return value &#x26;&#x26; (value instanceof Guid || validator.test(value.toString()));
+  return value &amp;&amp; (value instanceof Guid || validator.test(value.toString()));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-Let&#x27;s generate a new Guid instance.
+Let's generate a new Guid instance.
 
     var guid = Guid.create();
 
-We&#x27;ve now got an object which we can work with programmatically. Lets check the
+We've now got an object which we can work with programmatically. Lets check the
 validity of our Guid using the built-in validator:
 
     Guid.<span class="apidocCodeKeywordSpan">isGuid</span>(guid);
-    // -&#x3e; true
+    // -&gt; true
 
     Guid.value;
-    // -&#x3e; &#x27;6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d&#x27;
+    // -&gt; '6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d'
 
 A handy bit of functionality is that its `toString` method returns the string
 value, so you can do handy things like this:
@@ -409,7 +402,7 @@ value, so you can do handy things like this:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">raw = function () {
-  return [gen(2), gen(1), gen(1), gen(1), gen(3)].join(&#x22;-&#x22;);
+  return [gen(2), gen(1), gen(1), gen(1), gen(3)].join("-");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
@@ -420,13 +413,13 @@ value, so you can do handy things like this:
 In its simplest form, Guid lets you generate raw GUID formatted strings:
 
     Guid.<span class="apidocCodeKeywordSpan">raw</span>();
-    // -&#x3e; &#x27;6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d&#x27;
+    // -&gt; '6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d'
 
-Let&#x27;s generate a new Guid instance.
+Let's generate a new Guid instance.
 
     var guid = Guid.create();
 
-We&#x27;ve now got an object which we can work with programmatically. Lets check the
+We've now got an object which we can work with programmatically. Lets check the
 ...</pre></li>
     </ul>
 
@@ -441,3 +434,4 @@ We&#x27;ve now got an object which we can work with programmatically. Lets check
     ]
 </div>
 </div>
+</body></html>
