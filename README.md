@@ -1,6 +1,6 @@
 # npmdoc-guid
 
-#### api documentation for  [guid (v0.0.12)](https://github.com/dandean/guid)  [![npm package](https://img.shields.io/npm/v/npmdoc-guid.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-guid) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-guid.svg)](https://travis-ci.org/npmdoc/node-npmdoc-guid)
+#### basic api documentation for  [guid (v0.0.12)](https://github.com/dandean/guid)  [![npm package](https://img.shields.io/npm/v/npmdoc-guid.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-guid) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-guid.svg)](https://travis-ci.org/npmdoc/node-npmdoc-guid)
 
 #### A Guid generator and validator.
 
@@ -109,7 +109,8 @@
         "harness": "mocha-tdd",
         "files": "tests/*.js"
     },
-    "version": "0.0.12"
+    "version": "0.0.12",
+    "bin": {}
 }
 ```
 
