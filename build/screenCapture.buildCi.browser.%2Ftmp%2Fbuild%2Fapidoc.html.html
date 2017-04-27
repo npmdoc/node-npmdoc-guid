@@ -98,52 +98,6 @@
 
     </ol></li>
 
-    <li class="apidocModuleLi"><a href="#apidoc.module.guid.guid">module guid.guid</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.guid.guid.guid">
-            function <span class="apidocSignatureSpan">guid.</span>guid
-            <span class="apidocSignatureSpan">(guid)</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.guid.guid.create">
-            function <span class="apidocSignatureSpan">guid.guid.</span>create
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.guid.guid.isGuid">
-            function <span class="apidocSignatureSpan">guid.guid.</span>isGuid
-            <span class="apidocSignatureSpan">(value)</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.guid.guid.raw">
-            function <span class="apidocSignatureSpan">guid.guid.</span>raw
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">guid.guid.</span>EMPTY</span>
-
-        </li>
-
-    </ol></li>
-
 </ol></div>
 
 <div class="apidocSectionDiv">
@@ -233,21 +187,22 @@ Guid.isGuid(guid);
   return value &amp;&amp; (value instanceof Guid || validator.test(value.toString()));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-Let's generate a new Guid instance.
+if (!guid) throw new TypeError("Invalid argument; `value` has no value.");
 
-    var guid = Guid.create();
+this.value = Guid.EMPTY;
 
-We've now got an object which we can work with programmatically. Lets check the
-validity of our Guid using the built-in validator:
+if (guid &amp;&amp; guid instanceof Guid) {
+  this.value = guid.toString();
 
-    Guid.<span class="apidocCodeKeywordSpan">isGuid</span>(guid);
-    // -&gt; true
+} else if (guid &amp;&amp; Object.prototype.toString.call(guid) === "[object String]" &amp;&amp; Guid.<span class="
+apidocCodeKeywordSpan">isGuid</span>(guid)) {
+  this.value = guid;
+}
 
-    Guid.value;
-    // -&gt; '6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d'
-
-A handy bit of functionality is that its `toString` method returns the string
-value, so you can do handy things like this:
+this.equals = function(other) {
+  // Comparing string `value` against provided `guid` will auto-call
+  // toString on `guid` for comparison
+  return Guid.isGuid(other) &amp;&amp; this.value == other;
 ...</pre></li>
     </ul>
 
@@ -256,147 +211,6 @@ value, so you can do handy things like this:
     <h2>
         <a href="#apidoc.element.guid.raw" id="apidoc.element.guid.raw">
         function <span class="apidocSignatureSpan">guid.</span>raw
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">raw = function () {
-  return [gen(2), gen(1), gen(1), gen(1), gen(3)].join("-");
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-
-# Guid lets you generate and validate unique identifiers.
-
-[![browser support](https://ci.testling.com/tommydudebreaux/guid.png)](https://ci.testling.com/tommydudebreaux/guid)
-
-In its simplest form, Guid lets you generate raw GUID formatted strings:
-
-    Guid.<span class="apidocCodeKeywordSpan">raw</span>();
-    // -&gt; '6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d'
-
-Let's generate a new Guid instance.
-
-    var guid = Guid.create();
-
-We've now got an object which we can work with programmatically. Lets check the
-...</pre></li>
-    </ul>
-
-
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.guid.guid" id="apidoc.module.guid.guid">module guid.guid</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.guid.guid.guid" id="apidoc.element.guid.guid.guid">
-        function <span class="apidocSignatureSpan">guid.</span>guid
-        <span class="apidocSignatureSpan">(guid)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function Guid(guid) {
-  if (!guid) throw new TypeError("Invalid argument; `value` has no value.");
-
-  this.value = Guid.EMPTY;
-
-  if (guid &amp;&amp; guid instanceof Guid) {
-    this.value = guid.toString();
-
-  } else if (guid &amp;&amp; Object.prototype.toString.call(guid) === "[object String]" &amp;&amp; Guid.isGuid(guid)) {
-    this.value = guid;
-  }
-
-  this.equals = function(other) {
-    // Comparing string `value` against provided `guid` will auto-call
-    // toString on `guid` for comparison
-    return Guid.isGuid(other) &amp;&amp; this.value == other;
-  };
-
-  this.isEmpty = function() {
-    return this.value === Guid.EMPTY;
-  };
-
-  this.toString = function() {
-    return this.value;
-  };
-
-  this.toJSON = function() {
-    return this.value;
-  };
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.guid.guid.create" id="apidoc.element.guid.guid.create">
-        function <span class="apidocSignatureSpan">guid.guid.</span>create
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">create = function () {
-  return new Guid([gen(2), gen(1), gen(1), gen(1), gen(3)].join("-"));
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-In its simplest form, Guid lets you generate raw GUID formatted strings:
-
-Guid.raw();
-// -&gt; '6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d'
-
-Let's generate a new Guid instance.
-
-var guid = Guid.<span class="apidocCodeKeywordSpan">create</span>();
-
-We've now got an object which we can work with programmatically. Lets check the
-validity of our Guid using the built-in validator:
-
-Guid.isGuid(guid);
-// -&gt; true
-...</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.guid.guid.isGuid" id="apidoc.element.guid.guid.isGuid">
-        function <span class="apidocSignatureSpan">guid.guid.</span>isGuid
-        <span class="apidocSignatureSpan">(value)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">isGuid = function (value) {
-  return value &amp;&amp; (value instanceof Guid || validator.test(value.toString()));
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-Let's generate a new Guid instance.
-
-    var guid = Guid.create();
-
-We've now got an object which we can work with programmatically. Lets check the
-validity of our Guid using the built-in validator:
-
-    Guid.<span class="apidocCodeKeywordSpan">isGuid</span>(guid);
-    // -&gt; true
-
-    Guid.value;
-    // -&gt; '6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d'
-
-A handy bit of functionality is that its `toString` method returns the string
-value, so you can do handy things like this:
-...</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.guid.guid.raw" id="apidoc.element.guid.guid.raw">
-        function <span class="apidocSignatureSpan">guid.guid.</span>raw
         <span class="apidocSignatureSpan">()</span>
         </a>
     </h2>
